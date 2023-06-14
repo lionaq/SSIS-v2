@@ -1,0 +1,24 @@
+CREATE DATABASE  IF NOT EXISTS `mydb`;
+USE `mydb`;
+
+DROP TABLE IF EXISTS `course_table`;
+CREATE TABLE `course_table` (
+  `courseCode` varchar(10) NOT NULL,
+  `course` varchar(80) NOT NULL,
+  PRIMARY KEY (`courseCode`),
+  UNIQUE KEY `courseCode_UNIQUE` (`courseCode`)
+)
+
+DROP TABLE IF EXISTS `student_table`;
+
+CREATE TABLE `student_table` (
+  `studentID` varchar(9) NOT NULL,
+  `name` varchar(80) NOT NULL,
+  `gender` varchar(1) NOT NULL,
+  `yearLevel` int NOT NULL,
+  `courseCode` varchar(10) NOT NULL,
+  PRIMARY KEY (`studentID`),
+  UNIQUE KEY `studentID_UNIQUE` (`studentID`),
+  KEY `fk_idx` (`courseCode`),
+  CONSTRAINT `fk` FOREIGN KEY (`courseCode`) REFERENCES `course_table` (`courseCode`)
+)
