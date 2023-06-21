@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>801</width>
     <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>801</width>
     <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>800</width>
+    <width>801</width>
     <height>600</height>
    </size>
   </property>
@@ -50,6 +50,11 @@
       <height>600</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
     <property name="statusTip">
      <string/>
     </property>
@@ -59,8 +64,14 @@
     <property name="styleSheet">
      <string notr="true">background-color:rgb(34, 40, 49)</string>
     </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Rounded</enum>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideNone</enum>
     </property>
     <property name="usesScrollButtons">
      <bool>false</bool>
@@ -93,15 +104,24 @@
       <property name="text">
        <string/>
       </property>
+      <property name="maxLength">
+       <number>20</number>
+      </property>
+      <property name="placeholderText">
+       <string>Input Student ID For Searching</string>
+      </property>
      </widget>
      <widget class="QPushButton" name="deleteButtonStudent">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>440</y>
-        <width>171</width>
-        <height>71</height>
+        <x>420</x>
+        <y>20</y>
+        <width>341</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:rgb(0, 173, 181);
@@ -115,9 +135,9 @@ color: rgb(255, 255, 255);</string>
      <widget class="QTableView" name="studentTable">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>20</x>
         <y>120</y>
-        <width>551</width>
+        <width>741</width>
         <height>411</height>
        </rect>
       </property>
@@ -135,10 +155,16 @@ color: rgb(255, 255, 255);</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>140</y>
-        <width>171</width>
-        <height>71</height>
+        <y>20</y>
+        <width>341</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
       </property>
       <property name="styleSheet">
        <string notr="true">background-color:rgb(0, 173, 181);
@@ -149,65 +175,11 @@ color: rgb(255, 255, 255);</string>
        <string>ADD</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="editButtonStudent">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>290</y>
-        <width>171</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 173, 181);
-font: 87 8pt &quot;Arial Black&quot;;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>EDIT</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="searchButtonStudent">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>50</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 173, 181);
-font: 87 8pt &quot;Arial Black&quot;;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>SEARCH</string>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="courseTab">
      <attribute name="title">
       <string>COURSE</string>
      </attribute>
-     <widget class="QPushButton" name="searchButtonCourse_4">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>50</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 173, 181);
-font: 87 8pt &quot;Arial Black&quot;;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>SEARCH</string>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="courseLineEdit">
       <property name="geometry">
        <rect>
@@ -223,14 +195,20 @@ color: rgb(255, 255, 255);</string>
       <property name="text">
        <string/>
       </property>
+      <property name="maxLength">
+       <number>20</number>
+      </property>
+      <property name="placeholderText">
+       <string>Input Course Code For Searching</string>
+      </property>
      </widget>
      <widget class="QPushButton" name="addButtonCourse">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>140</y>
-        <width>171</width>
-        <height>71</height>
+        <y>20</y>
+        <width>341</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -242,31 +220,13 @@ color: rgb(255, 255, 255);</string>
        <string>ADD</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="editButtonCourse">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>290</y>
-        <width>171</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 173, 181);
-font: 87 8pt &quot;Arial Black&quot;;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>EDIT</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="deleteButtonCourse">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>440</y>
-        <width>171</width>
-        <height>71</height>
+        <x>420</x>
+        <y>20</y>
+        <width>341</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -281,9 +241,9 @@ color: rgb(255, 255, 255);</string>
      <widget class="QTableView" name="courseTable">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>20</x>
         <y>120</y>
-        <width>551</width>
+        <width>741</width>
         <height>411</height>
        </rect>
       </property>

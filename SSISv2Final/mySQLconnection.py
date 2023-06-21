@@ -1,17 +1,18 @@
 import mysql.connector
+import configparser
+
+configFilePath = r"C:\Users\Romeo B. Aclo\Desktop\SSISv2Final\mySQLInfo.ini"
+config = configparser.ConfigParser()
+config.read(configFilePath)
 
 connection = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='12345',
-    database='mydb'
+    host=config.get('mysql', 'host'),
+    user=config.get('mysql', 'user'),
+    password=config.get('mysql', 'password'),
+    database=config.get('mysql', 'database')
 )
 
-# Create a cursor object
 cursor = connection.cursor()
-
-#values = ["2021-1932", "kobe", "M", 2, "BSCS"]
-#print(values)
 
 def insertTable(values, choice):
     if choice == 0:
@@ -22,7 +23,7 @@ def insertTable(values, choice):
         print("no choice selected")
         return
 
-    print(values)
+    #print(values)
     cursor.execute(sql, values)
     connection.commit()
 
@@ -42,9 +43,6 @@ def deleteTableRow(values, choice):
             cursor.execute(sql, (values,))
             connection.commit()
 
-#string = "BSCS"
-#deleteTableRow(string, 1)
-
 def queryTable(choice):
     print(choice)
     if choice == 0:
@@ -57,12 +55,12 @@ def queryTable(choice):
 
     cursor.execute(sql)
     rows = cursor.fetchall()
-    print(rows)
+    #print(rows)
     return rows
 
 def editTable(columnName, list, choice):
-    print(columnName)
-    print(list)
+    #print(columnName)
+    #print(list)
     if choice == 0:
         sql = f"UPDATE student_table SET {columnName} = %s WHERE studentID = %s"
     elif choice == 1:
@@ -70,7 +68,6 @@ def editTable(columnName, list, choice):
 
     cursor.execute(sql,list)
     connection.commit()
-
 
 def closeConnection():
     cursor.close()

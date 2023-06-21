@@ -1,4 +1,4 @@
-from SSIS_GUI import Ui_SSIS, studentIdPopUp, studentNamePopUp, studentGenderPopUp, studentYearPopUp, studentAddWindow, studentCoursePopUp, courseCodePopUp, courseLinePopUp, courseAddWindow
+from SSIS_GUI import Ui_SSIS, studentIdPopUp, studentNamePopUp, studentGenderPopUp, studentYearPopUp, studentAddWindow, studentCoursePopUp, courseCodePopUp, courseLinePopUp, courseAddWindow, show_error_message
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import Qt, QSortFilterProxyModel
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
@@ -29,11 +29,10 @@ class function(Ui_SSIS):
 
     def duplicateChecker(self, stringVal, value):
         list = [item[0] for item in mysql.queryTable(value)]
-        print("HEY")
         for row in list:
-            print(row)
+            #print(row)
             if row == stringVal:
-                Ui_SSIS.show_error_message("STUDENT ID ALREADY EXISTS")
+                show_error_message("STUDENT ID ALREADY EXISTS")
                 return True
             
         return False
@@ -44,7 +43,7 @@ class function(Ui_SSIS):
         columnName = self.modelStudent.horizontalHeaderItem(column).text()
         inputWindow = None
         data = 0
-        print("COLUMN IS:", column, "PK IS:", self.studentPK[0])
+       #print("COLUMN IS:", column, "PK IS:", self.studentPK[0])
 
         match column:
             case 0:
@@ -78,10 +77,9 @@ class function(Ui_SSIS):
                 return
     
         self.modelStudent.setData(model_index, data, Qt.ItemDataRole.EditRole)
-        print("EDITED")
+        #print("EDITED")
         mysql.editTable(columnName, [data, self.studentPK[0]], 0)
         
-
     def handleDataChangedCourse(self, index):
         # Retrieve the edited data and its row and column index
         column = index.column()
@@ -93,7 +91,6 @@ class function(Ui_SSIS):
             case 0:
                 inputWindow = courseCodePopUp()
             case 1:
-                print("Course")
                 inputWindow = courseLinePopUp()
             case _:
                 return
@@ -114,9 +111,8 @@ class function(Ui_SSIS):
                 return
            
         self.modelCourse.setData(model_index, data, Qt.ItemDataRole.EditRole)
-        print("EDITED")
+        #print("EDITED")
         mysql.editTable(columnName, [data, self.coursePK[0]], 1)
-
 
     def cellSelectedStudent(self):
         selected_indexes = self.studentTable.selectedIndexes()
@@ -130,7 +126,7 @@ class function(Ui_SSIS):
        
 
         self.studentPK = first_column_data
-        print(self.studentPK)
+        #print(self.studentPK)
 
     def cellSelectedCourse(self):
         selected_indexes = self.courseTable.selectedIndexes()
@@ -148,17 +144,16 @@ class function(Ui_SSIS):
 
     def deleteRowStudent(self):
         for item in self.studentPK:
-            print(item)
+            #print(item)
             mysql.deleteTableRow(item, 0)
             self.updateTable(0)
 
     def deleteRowCourse(self):
         for item in self.coursePK:
-            print(item)
+            #print(item)
             mysql.deleteTableRow(item, 1)
             self.updateTable(0)
             self.updateTable(1)
-
 
     def searchLineInit(self):
         self.filterStudent = QSortFilterProxyModel()
@@ -197,7 +192,7 @@ class function(Ui_SSIS):
             if data == 0:
                 return
             
-            print(data)
+            #print(data)
             if self.duplicateChecker(data[0], 1) != True and data != 0:
                 mysql.insertTable(data, 1)
                 self.updateTable(1)
@@ -220,6 +215,7 @@ class function(Ui_SSIS):
         self.modelStudent.setHorizontalHeaderLabels(headers)
         self.studentTable.setColumnWidth(1,324)
         for row in rows:
+            print(row)
             item_row = []
             for value in row:
                 item = QStandardItem(str(value))

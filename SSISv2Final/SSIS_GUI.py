@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtWidgets, QtGui
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QVBoxLayout, QLabel, QLineEdit, QComboBox, QDialog, QMessageBox
 from PyQt6.QtGui import QIntValidator
 
@@ -55,6 +56,7 @@ class Ui_SSIS(object):
         self.studentLineEdit.setMaxLength(20)
         self.studentLineEdit.setObjectName("studentLineEdit")
         self.deleteButtonStudent = QtWidgets.QPushButton(parent=self.studentTab)
+        self.deleteButtonStudent.setCursor(Qt.CursorShape.PointingHandCursor)
         self.deleteButtonStudent.setGeometry(QtCore.QRect(420, 20, 341, 41))
         self.deleteButtonStudent.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
@@ -70,6 +72,7 @@ class Ui_SSIS(object):
         self.modelStudent.setHorizontalHeaderLabels(headers)
         self.addButtonStudent = QtWidgets.QPushButton(parent=self.studentTab)
         self.addButtonStudent.setGeometry(QtCore.QRect(20, 20, 341, 41))
+        self.addButtonStudent.setCursor(Qt.CursorShape.PointingHandCursor)
         self.addButtonStudent.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
@@ -85,12 +88,14 @@ class Ui_SSIS(object):
         self.courseLineEdit.setObjectName("courseLineEdit")
         self.addButtonCourse = QtWidgets.QPushButton(parent=self.courseTab)
         self.addButtonCourse.setGeometry(QtCore.QRect(20, 20, 341, 41))
+        self.addButtonCourse.setCursor(Qt.CursorShape.PointingHandCursor)
         self.addButtonCourse.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
         self.addButtonCourse.setObjectName("addButtonCourse")
         self.deleteButtonCourse = QtWidgets.QPushButton(parent=self.courseTab)
         self.deleteButtonCourse.setGeometry(QtCore.QRect(420, 20, 341, 41))
+        self.deleteButtonCourse.setCursor(Qt.CursorShape.PointingHandCursor)
         self.deleteButtonCourse.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
@@ -108,17 +113,9 @@ class Ui_SSIS(object):
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(SSIS)
 
-    def show_error_message(message):
-        error_box = QMessageBox()
-        error_box.setIcon(QMessageBox.Icon.Critical)
-        error_box.setWindowTitle("Error")
-        error_box.setText("An error occurred.")
-        error_box.setInformativeText(message)
-        error_box.exec()
-
     def retranslateUi(self, SSIS):
         _translate = QtCore.QCoreApplication.translate
-        SSIS.setWindowTitle(_translate("SSIS", "MainWindow"))
+        SSIS.setWindowTitle(_translate("SSIS", "Simple Student Information System"))
         self.studentLineEdit.setPlaceholderText(_translate("SSIS", "Input Student ID For Searching"))
         self.deleteButtonStudent.setText(_translate("SSIS", "DELETE"))
         self.addButtonStudent.setText(_translate("SSIS", "ADD"))
@@ -163,7 +160,6 @@ class studentIdPopUp(QDialog):
         # Insert a dash after the 5th character
         if len(text) >= 5:
             text = text[:4] + "-" + text[4:]
-            print(len(text))
 
         # Set the updated text in the line edit
         self.student_id_line_edit.setText(text)
@@ -203,7 +199,7 @@ class studentNamePopUp(QDialog):
         self.setLayout(layout)
 
     def return_info(self):      
-        if len(self.name_line_edit.text()) >= 1:
+        if len(self.name_line_edit.text()) >= 1 and not self.name_line_edit.text().isspace():
             return self.name_line_edit.text()
         else:
             show_error_message("BLANK FIELD, TRY AGAIN")
@@ -349,7 +345,6 @@ class studentAddWindow(QDialog):
         # Insert a dash after the 5th character
         if len(text) >= 5:
             text = text[:4] + "-" + text[4:]
-            print(len(text))
 
         # Set the updated text in the line edit
         self.student_id_line_edit.setText(text)
@@ -362,7 +357,7 @@ class studentAddWindow(QDialog):
             show_error_message("NO COURSES AVAILABLE, PLEASE ADD A COURSE")
             return 0
         
-        if len(list[0]) >= 1 and len(list[1]) >= 1:
+        if len(list[0]) >= 1 and len(list[1]) >= 1 and not list[1].isspace():
             return list
         else:
             show_error_message("BLANK FIELDS, TRY AGAIN")
