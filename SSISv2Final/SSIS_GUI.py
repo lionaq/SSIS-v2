@@ -117,12 +117,12 @@ class Ui_SSIS(object):
         _translate = QtCore.QCoreApplication.translate
         SSIS.setWindowTitle(_translate("SSIS", "Simple Student Information System"))
         self.studentLineEdit.setPlaceholderText(_translate("SSIS", "Input Student ID For Searching"))
-        self.deleteButtonStudent.setText(_translate("SSIS", "DELETE"))
+        self.deleteButtonStudent.setText(_translate("SSIS", "DELETE ROW"))
         self.addButtonStudent.setText(_translate("SSIS", "ADD"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.studentTab), _translate("SSIS", "STUDENT"))
         self.courseLineEdit.setPlaceholderText(_translate("SSIS", "Input Course Code For Searching"))
         self.addButtonCourse.setText(_translate("SSIS", "ADD"))
-        self.deleteButtonCourse.setText(_translate("SSIS", "DELETE"))
+        self.deleteButtonCourse.setText(_translate("SSIS", "DELETE ROW"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.courseTab), _translate("SSIS", "COURSE"))
 
 
@@ -462,3 +462,22 @@ class courseAddWindow(QDialog):
         else:
             show_error_message("BLANK FIELDS, TRY AGAIN")
             return 0
+
+class deletePopUp(QDialog):
+
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Delete")
+
+        self.deleteLabel = QLabel("Confirm Deletion?")
+        
+        self.confirm_button = QtWidgets.QPushButton("Confirm")
+        self.confirm_button.clicked.connect(self.accept)
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+
+        layout.addWidget(self.deleteLabel)
+        layout.addWidget(self.confirm_button)
+        self.setLayout(layout)

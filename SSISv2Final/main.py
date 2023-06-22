@@ -1,4 +1,4 @@
-from SSIS_GUI import Ui_SSIS, studentIdPopUp, studentNamePopUp, studentGenderPopUp, studentYearPopUp, studentAddWindow, studentCoursePopUp, courseCodePopUp, courseLinePopUp, courseAddWindow, show_error_message
+from SSIS_GUI import Ui_SSIS, studentIdPopUp, studentNamePopUp, studentGenderPopUp, studentYearPopUp, studentAddWindow, studentCoursePopUp, courseCodePopUp, courseLinePopUp, courseAddWindow, show_error_message, deletePopUp
 from PyQt6 import QtWidgets
 from PyQt6.QtCore import Qt, QSortFilterProxyModel
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
@@ -143,17 +143,21 @@ class function(Ui_SSIS):
         #print(self.coursePK)
 
     def deleteRowStudent(self):
-        for item in self.studentPK:
-            #print(item)
-            mysql.deleteTableRow(item, 0)
-            self.updateTable(0)
+        popUp = deletePopUp()
+        if popUp.exec() == 1:
+            for item in self.studentPK:
+                #print(item)
+                mysql.deleteTableRow(item, 0)
+                self.updateTable(0)
 
     def deleteRowCourse(self):
-        for item in self.coursePK:
-            #print(item)
-            mysql.deleteTableRow(item, 1)
-            self.updateTable(0)
-            self.updateTable(1)
+        popUp = deletePopUp()
+        if popUp.exec() == 1:
+            for item in self.coursePK:
+                #print(item)
+                mysql.deleteTableRow(item, 1)
+                self.updateTable(0)
+                self.updateTable(1)
 
     def searchLineInit(self):
         self.filterStudent = QSortFilterProxyModel()
