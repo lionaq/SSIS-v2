@@ -224,7 +224,7 @@ class function(Ui_SSIS):
         # Set the column headers
         headers = ["StudentID", "Name", "Gender", "YearLevel", "CourseCode"]
         self.modelStudent.setHorizontalHeaderLabels(headers)
-        self.studentTable.setColumnWidth(1,324)
+        self.studentTable.setColumnWidth(1,300)
         for row in rows:
             print(row)
             item_row = []
@@ -239,7 +239,7 @@ class function(Ui_SSIS):
         # Set the column headers
         headers = ["CourseCode", "Course"]
         self.modelCourse.setHorizontalHeaderLabels(headers)
-        self.courseTable.setColumnWidth(1,624)
+        self.courseTable.setColumnWidth(1,600)
         for row in rows:
             item_row = []
             for value in row:
