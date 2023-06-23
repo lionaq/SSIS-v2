@@ -55,28 +55,65 @@ class Ui_SSIS(object):
         self.studentLineEdit.setText("")
         self.studentLineEdit.setMaxLength(20)
         self.studentLineEdit.setObjectName("studentLineEdit")
+        self.studentLineEdit.setPlaceholderText("SEARCH HERE...")
         self.deleteButtonStudent = QtWidgets.QPushButton(parent=self.studentTab)
-        self.deleteButtonStudent.setCursor(Qt.CursorShape.PointingHandCursor)
         self.deleteButtonStudent.setGeometry(QtCore.QRect(420, 20, 341, 41))
+        self.deleteButtonStudent.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.deleteButtonStudent.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
         self.deleteButtonStudent.setObjectName("deleteButtonStudent")
         self.studentTable = QtWidgets.QTableView(parent=self.studentTab)
-        self.studentTable.setGeometry(QtCore.QRect(20, 120, 741, 411))
+        self.studentTable.setGeometry(QtCore.QRect(20, 150, 741, 381))
         self.studentTable.setAutoFillBackground(False)
         self.studentTable.setStyleSheet("background-color: rgb(238, 238, 238)")
         self.studentTable.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.ExtendedSelection)
         self.studentTable.setObjectName("studentTable")
-        headers = ["StudentID", "Name", "Gender", "YearLevel", "CourseCode"]
-        self.modelStudent.setHorizontalHeaderLabels(headers)
         self.addButtonStudent = QtWidgets.QPushButton(parent=self.studentTab)
         self.addButtonStudent.setGeometry(QtCore.QRect(20, 20, 341, 41))
-        self.addButtonStudent.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.addButtonStudent.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.addButtonStudent.setMouseTracking(False)
         self.addButtonStudent.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
         self.addButtonStudent.setObjectName("addButtonStudent")
+        self.horizontalLayoutWidget = QtWidgets.QWidget(parent=self.studentTab)
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 100, 741, 51))
+        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.studentIdRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget)
+        self.studentIdRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.studentIdRadio.setChecked(True)
+        self.studentIdRadio.setObjectName("studentIdRadio")
+        self.horizontalLayout.addWidget(self.studentIdRadio)
+        self.studentNameRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget)
+        self.studentNameRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.studentNameRadio.setObjectName("studentNameRadio")
+        self.horizontalLayout.addWidget(self.studentNameRadio)
+        self.studentGenderRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget)
+        self.studentGenderRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.studentGenderRadio.setObjectName("studentGenderRadio")
+        self.horizontalLayout.addWidget(self.studentGenderRadio)
+        self.studentYearLevelRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget)
+        self.studentYearLevelRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.studentYearLevelRadio.setObjectName("studentYearLevelRadio")
+        self.horizontalLayout.addWidget(self.studentYearLevelRadio)
+        self.studentCourseCodeRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget)
+        self.studentCourseCodeRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.studentCourseCodeRadio.setObjectName("studentCourseCodeRadio")
+        self.horizontalLayout.addWidget(self.studentCourseCodeRadio)
         self.tabWidget.addTab(self.studentTab, "")
         self.courseTab = QtWidgets.QWidget()
         self.courseTab.setObjectName("courseTab")
@@ -86,26 +123,46 @@ class Ui_SSIS(object):
         self.courseLineEdit.setText("")
         self.courseLineEdit.setMaxLength(20)
         self.courseLineEdit.setObjectName("courseLineEdit")
+        self.courseLineEdit.setPlaceholderText("SEARCH HERE...")
         self.addButtonCourse = QtWidgets.QPushButton(parent=self.courseTab)
         self.addButtonCourse.setGeometry(QtCore.QRect(20, 20, 341, 41))
-        self.addButtonCourse.setCursor(Qt.CursorShape.PointingHandCursor)
         self.addButtonCourse.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
         self.addButtonCourse.setObjectName("addButtonCourse")
         self.deleteButtonCourse = QtWidgets.QPushButton(parent=self.courseTab)
         self.deleteButtonCourse.setGeometry(QtCore.QRect(420, 20, 341, 41))
-        self.deleteButtonCourse.setCursor(Qt.CursorShape.PointingHandCursor)
         self.deleteButtonCourse.setStyleSheet("background-color:rgb(0, 173, 181);\n"
 "font: 87 8pt \"Arial Black\";\n"
 "color: rgb(255, 255, 255);")
         self.deleteButtonCourse.setObjectName("deleteButtonCourse")
         self.courseTable = QtWidgets.QTableView(parent=self.courseTab)
-        self.courseTable.setGeometry(QtCore.QRect(20, 120, 741, 411))
+        self.courseTable.setGeometry(QtCore.QRect(20, 150, 741, 381))
         self.courseTable.setAutoFillBackground(False)
         self.courseTable.setStyleSheet("background-color: rgb(238, 238, 238)")
         self.courseTable.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.ExtendedSelection)
         self.courseTable.setObjectName("courseTable")
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(parent=self.courseTab)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(20, 100, 741, 51))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.courseCourseCodeRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget_2)
+        self.courseCourseCodeRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.courseCourseCodeRadio.setChecked(True)
+        self.courseCourseCodeRadio.setAutoRepeat(False)
+        self.courseCourseCodeRadio.setObjectName("courseCourseCodeRadio")
+        self.horizontalLayout_2.addWidget(self.courseCourseCodeRadio)
+        self.courseCourseRadio = QtWidgets.QRadioButton(parent=self.horizontalLayoutWidget_2)
+        self.courseCourseRadio.setStyleSheet("background-color:rgb(0, 173, 181);\n"
+"font: 87 8pt \"Arial Black\";\n"
+"color: rgb(255, 255, 255);")
+        self.courseCourseRadio.setChecked(False)
+        self.courseCourseRadio.setObjectName("courseCourseRadio")
+        self.horizontalLayout_2.addWidget(self.courseCourseRadio)
         self.tabWidget.addTab(self.courseTab, "")
         SSIS.setCentralWidget(self.centralwidget)
 
@@ -115,14 +172,21 @@ class Ui_SSIS(object):
 
     def retranslateUi(self, SSIS):
         _translate = QtCore.QCoreApplication.translate
-        SSIS.setWindowTitle(_translate("SSIS", "Simple Student Information System"))
-        self.studentLineEdit.setPlaceholderText(_translate("SSIS", "Input Student ID For Searching"))
+        SSIS.setWindowTitle(_translate("SSIS", "MainWindow"))
         self.deleteButtonStudent.setText(_translate("SSIS", "DELETE ROW"))
         self.addButtonStudent.setText(_translate("SSIS", "ADD"))
+        self.studentIdRadio.setText(_translate("SSIS", "Student ID"))
+        self.studentNameRadio.setText(_translate("SSIS", "Name"))
+        self.studentGenderRadio.setText(_translate("SSIS", "Gender"))
+        self.studentYearLevelRadio.setText(_translate("SSIS", "Year Level"))
+        self.studentCourseCodeRadio.setToolTip(_translate("SSIS", "<html><head/><body><p>background-color:rgb(0, 173, 181);</p><p>font: 87 8pt &quot;Arial Black&quot;;</p><p>color: rgb(255, 255, 255);</p></body></html>"))
+        self.studentCourseCodeRadio.setText(_translate("SSIS", "Course Code"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.studentTab), _translate("SSIS", "STUDENT"))
-        self.courseLineEdit.setPlaceholderText(_translate("SSIS", "Input Course Code For Searching"))
         self.addButtonCourse.setText(_translate("SSIS", "ADD"))
         self.deleteButtonCourse.setText(_translate("SSIS", "DELETE ROW"))
+        self.courseCourseCodeRadio.setText(_translate("SSIS", "Course Code"))
+        self.courseCourseRadio.setToolTip(_translate("SSIS", "<html><head/><body><p>background-color:rgb(0, 173, 181);</p><p>font: 87 8pt &quot;Arial Black&quot;;</p><p>color: rgb(255, 255, 255);</p></body></html>"))
+        self.courseCourseRadio.setText(_translate("SSIS", "Course"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.courseTab), _translate("SSIS", "COURSE"))
 
 
